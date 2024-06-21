@@ -19,7 +19,6 @@ app.get("/",(res,req)=>{
         message:"server running"
     })
 })
-
 // port 
 const port  = process.env.PORT || 8080
 //listen
