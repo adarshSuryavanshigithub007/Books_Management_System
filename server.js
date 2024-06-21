@@ -2,13 +2,15 @@ const express =require('express')
 const colors = require('colors')
 const moragan = require('morgan')
 const dotenv = require('dotenv')
+const connectDB = require('./config/db')
 
 //config
 dotenv.config()
 
 // rest object 
     const app = express()
-
+// connection db
+connectDB()
 // middleware
 app.use(express.json())
 app.use(moragan('dev'))
