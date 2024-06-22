@@ -25,7 +25,14 @@ const Login = () => {
         }
     }
     return (
-        <CommonForm  onFinish={onFinishHandler} to="/regi" heading='Login'Children="Don't have account ? SignUp"  type='submit'/>
+        <CommonForm  
+        onFinish={onFinishHandler} 
+        minHeight='100vh'
+        to="/register" 
+        heading='Login' 
+        SignIn="true" 
+        Children="Don't have account ? SignUp"  
+        type='submit'/>
     )
 }
 

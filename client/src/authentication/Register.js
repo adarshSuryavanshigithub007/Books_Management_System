@@ -3,9 +3,11 @@ import { CommonForm } from '../components/CommonForm'
 
 import { message } from 'antd'
 import { getUserRegister } from '../utils/service/Apis'
+import { useNavigate } from 'react-router-dom'
 
 
 const Register = () => {
+    const navigate = useNavigate()
     const onFinishHandler = async (values) => {
         const { confirmPassword, ...userWithoutConfirmPassword } = values;
         console.log(values, userWithoutConfirmPassword);
@@ -16,6 +18,7 @@ const Register = () => {
                 console.log(user)
                 if (user.data.success) {
                     message.success(user.data.message);
+                    navigate('/login')
                 } else {
                     message.error(user.data.message);
                 }
@@ -30,6 +33,7 @@ const Register = () => {
 
     return (
         <CommonForm
+            minHeight='100vh'
             onFinish={onFinishHandler}
             SignUp="true"
             to="/login"

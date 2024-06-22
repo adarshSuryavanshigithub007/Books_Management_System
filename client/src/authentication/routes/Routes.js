@@ -4,6 +4,7 @@ import Home from '../../pages/Home';
 import Login from '../Login';
 import Register from '../Register';
 import PublicRoute from './PublicRoute';
+import CreateNewBooks from '../../pages/Books/CreateNewBooks';
 import ProtectedRoute from './ProtectedRoute';
 
 const RoutesComponents = () => {
@@ -11,6 +12,7 @@ const RoutesComponents = () => {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+                <Route path="/addnewbooks" element={<ProtectedRoute><CreateNewBooks /></ProtectedRoute>} />
                 <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
                 <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
             </Routes>
