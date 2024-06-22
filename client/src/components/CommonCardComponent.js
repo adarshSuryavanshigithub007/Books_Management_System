@@ -5,7 +5,7 @@ import { faEye, faPencil, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { book } from './images/image';
 import { Link } from 'react-router-dom';
-export const CardComponent = ({ eachBooks, deleteBook, editBook, to }) => {
+export const CardComponent = ({ eachBooks, deleteBook, to, toBookDetails, details }) => {
     return (
         <div className='col-4 col-lg-4 col-md-4'>
             <Card
@@ -17,16 +17,15 @@ export const CardComponent = ({ eachBooks, deleteBook, editBook, to }) => {
                 }}
                 actions={[
                     <React.Fragment key="edit">
-                        <Link to={to}><FontAwesomeIcon icon={faPencil} onClick={editBook} /></Link>
+                        {!details ? <Link to={to}><FontAwesomeIcon icon={faPencil} /></Link> : null}
                     </React.Fragment>,
                     <React.Fragment key="delete">
-                        <FontAwesomeIcon icon={faTrash} onClick={deleteBook} />
+                        {!details ? <FontAwesomeIcon icon={faTrash} onClick={deleteBook} /> : null}
                     </React.Fragment>,
                     <React.Fragment key="view">
-                        <FontAwesomeIcon icon={faEye} />
+                        {!details ? <Link to={toBookDetails}> <FontAwesomeIcon icon={faEye} /></Link> : null}
                     </React.Fragment>
                 ]}
-                
             >
                 <div > {/* Fixed-height wrapper */}
                     <Meta

@@ -36,8 +36,6 @@ console.log(user)
             navigate('/login');
         }
     }, [token, user, navigate]);
-
-    // Show a loading state or nothing while the user data is being fetched
     if (!user) {
         return null;
     }

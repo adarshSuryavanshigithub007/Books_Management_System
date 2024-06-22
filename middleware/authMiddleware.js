@@ -10,7 +10,6 @@ module.exports = (req, res, next) => {
                     success: false
                 });
             } else {
-                // Only set req.body.userId if it is not already set
                 if (!req.body.userId) {
                     req.body.userId = decode.id;
                 }

@@ -6,7 +6,7 @@ export const getUserRegister = async (data) => {
     try {
         const getUserRegisterResponse = await axios.post(`${USER_URL}/register`, data);
         console.log(getUserRegisterResponse);
-        return getUserRegisterResponse; // Ensure the function returns the response
+        return getUserRegisterResponse;
     } catch (error) {
         console.log(error);
         console.log(message.error)
@@ -50,7 +50,8 @@ export const AddNewBooks = async ({ values, token }) => {
         console.log(newBooksResponse)
         return newBooksResponse.data
     } catch (error) {
-        console.log(error)
+        console.error(error);
+        throw error;
     }
 }
 
@@ -64,7 +65,8 @@ export const getAllBooks = async (token) => {
         console.log(AllBooksResponse)
         return AllBooksResponse.data
     } catch (error) {
-        console.log(error)
+        console.error(error);
+        throw error;
     }
 }
 
@@ -78,24 +80,40 @@ export const getDeleteBook = async (token, id) => {
         })
         console.log(response)
         return response.data
-        // 
     } catch (error) {
-        console.log(error)
+        console.error(error);
+        throw error;
     }
 }
 
 export const getEditBook = async (token, id, data) => {
-    console.log("edit book", token, id, data); // Check console log for correct values
+    console.log("edit book", token, id, data);
     try {
         const response = await axios.put(`${BOOKS_URL}books/${id}`, data, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
         });
-        console.log(response.data); // Log response data for debugging
+        console.log(response.data);
         return response.data;
     } catch (error) {
-        console.error(error); // Log error for debugging
-        throw error; // Throw error to handle it in calling function
+        console.error(error);
+        throw error;
     }
 };
+
+export const getBookDetails = async (token, id) => {
+    try {
+        const response = await axios.get(`${BOOKS_URL}books/${id}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        console.log(response)
+        return response.data
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
+

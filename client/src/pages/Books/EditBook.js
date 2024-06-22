@@ -29,31 +29,29 @@ const EditBook = () => {
 
     useEffect(() => {
         handleChangeAllBooks();
-    }, [id]); // Fetch books only when the id changes
+    }, [id]);
 
     useEffect(() => {
         if (allBooks.length > 0) {
             const selectedBook = allBooks.find(book => book._id === id);
             if (selectedBook) {
                 setBook(selectedBook);
-                form.setFieldsValue(selectedBook); // Set form initial values dynamically
+                form.setFieldsValue(selectedBook)
             }
         }
-    }, [allBooks, id, form]); // Update form values when allBooks or id changes
+    }, [allBooks, id, form])
 
     const handleSubmitForm = async (values) => {
         console.log('Form Submitted:', values);
         try {
             const response = await getEditBook(token, id, values);
-            console.log(response); // Log successful response
+            console.log(response)
             if (response.success) {
                 message.success(response.message)
                 navigate('/')
             }
-            // Handle success actions if needed
         } catch (error) {
             console.error('Edit book request failed:', error);
-            // Handle error state or show error message to the user
         }
     };
 
@@ -82,7 +80,7 @@ const EditBook = () => {
                                 icon={<FontAwesomeIcon icon={faBook} />}
                             />
                             <Form
-                                form={form} // Connect form instance to Form component
+                                form={form}
                                 style={{ width: '100%' }}
                                 name="basic"
                                 layout="vertical"

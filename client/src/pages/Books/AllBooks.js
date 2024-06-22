@@ -13,11 +13,10 @@ const AllBooks = () => {
     console.log(allBooks)
     const handleChangeAllBooks = async () => {
         try {
-            const allBooks = await getAllBooks(token)
-            console.log(allBooks)
-            if (allBooks.success) {
-                // message.success(allBooks.message)
-                setAllBooks(allBooks.data)
+            const response = await getAllBooks(token)
+            console.log(response)
+            if (response.success) {
+                setAllBooks(response.data)
             }
         } catch (error) {
             console.log(error)
@@ -27,32 +26,33 @@ const AllBooks = () => {
     useEffect(() => {
         handleChangeAllBooks()
     }, [])
-    const handleClickDeleteBook = async (id) => {
-        console.log("delete book", id)
+    const handleClickDeleteBook = async ( id) => {
+        console.log("delete book", id);
         swal({
             title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this imaginary file!",
+            text: "Once deleted, you will not be able to recover this!",
             icon: "warning",
             buttons: true,
             dangerMode: true,
-        })
-            .then((willDelete) => {
-                console.log("delete book", id)
-                getDeleteBook(token, id)
-                if (willDelete) {
-                    console.log(willDelete)
-                    swal("Poof! Your imaginary file has been deleted!", {
+        }).then(async (willDelete) => {
+            if (willDelete) {   
+                try {
+                    console.log("Confirmed deletion");
+                    await getDeleteBook(token, id);
+                    swal("Poof! Your Book has been deleted!", {
                         icon: "success",
                     });
-                    handleChangeAllBooks()
-                } else {
-                    swal("Your imaginary file is safe!");
+                    handleChangeAllBooks();
+                } catch (error) {
+                    console.log("Error deleting book:", error);
+                    swal("Oops!", "Failed to delete the book.", "error");
                 }
-            });
-    }
-    const handleClickEditBook = (id)=>{
-        console.log("edit book",id)
-    }
+            } else {
+                console.log("Cancelled deletion");
+                swal("Your Book is safe!");
+            }
+        });
+    };
     useEffect(() => {
         handleChangeAllBooks()
     }, [])
@@ -66,12 +66,13 @@ const AllBooks = () => {
                 </div>
                 <Row justify='center' gutter={[16, 16]}>
                     {allBooks && allBooks.map((eachBooks) => {
+                        console.log(eachBooks)
                         return <CardComponent
+                        key={eachBooks._id}
                             eachBooks={eachBooks}
                             deleteBook={() => handleClickDeleteBook(eachBooks._id)}
-                            editBook = {()=>handleClickEditBook(eachBooks._id)}
                             to={`edituser/${eachBooks._id}`}
-
+                            toBookDetails={`bookdetails/${eachBooks._id}`}
                         />
                     })}
                 </Row></>) : <>

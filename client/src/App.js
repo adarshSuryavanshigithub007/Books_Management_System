@@ -8,10 +8,6 @@ function App() {
   return (
     <div >
       <RoutesComponents/>
-      {/* <Layout/>
-      <Home/> */}
-      {/* <h1>hello</h1>
-      <button className='btn btn-primary'>click</button> */}
     </div>
   );
 }

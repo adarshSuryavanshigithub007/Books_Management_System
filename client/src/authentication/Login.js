@@ -10,7 +10,7 @@ const Login = () => {
         console.log(values)
         try {
             const res = await getUserLogin(values)
-            // window.location.reload()
+            window.location.reload()
             console.log(res)
             if (res.data.success) {
                 navigate('/')
