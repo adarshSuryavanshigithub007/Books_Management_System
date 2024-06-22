@@ -27,6 +27,18 @@
 .App-link {
   color: #61dafb;
 }
+/* CSS */
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px; /* Adjust the width and height as needed */
+  height: 40px;
+  border: 2px solid #000; /* Adjust the border color and thickness as needed */
+  border-radius: 4px; /* Optional: to make slightly rounded corners */
+  cursor: pointer;
+}
+
 
 @keyframes App-logo-spin {
   from {

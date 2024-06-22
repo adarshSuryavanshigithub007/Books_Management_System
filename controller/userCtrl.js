@@ -15,7 +15,11 @@ const registerController = async (req, resp) => {
         req.body.password = hashedPassword
         const newUser = new userModel(req.body)
         await newUser.save()
-        resp.status(200).send({ message: `Register succesfull`, success: true })
+        resp.status(200).send({
+            message: `Register succesfull`,
+            success: true,
+            user: newUser
+        })
     } catch (error) {
         console.log(error)
         resp.status(500).send({ success: false, message: `Register Controller ${error.message}` })
@@ -67,4 +71,4 @@ const authController = async (req, res) => {
     }
 }
 
-module.exports = {loginController,registerController,authController}
+module.exports = { loginController, registerController, authController }
