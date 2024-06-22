@@ -1,5 +1,5 @@
 import axios from "axios"
-import {USER_URL } from "./API_URL"
+import { BOOKS_URL, USER_URL } from "./API_URL"
 import { message } from "antd";
 
 export const getUserRegister = async (data) => {
@@ -41,14 +41,17 @@ export const getUserinfo = async (token) => {
 
 
 
-// export const AddNewBooks = async()=>{
-//     try {
-//         const newBooksResponse = await axios.post(`${BOOKS_API}/new-books`,{},{
-//             headers:{
-//                 //  Authorization: `Bearer ${token}`
-//             }
-//         })
-//     } catch (error) {
-        
-//     }
-// }
+export const AddNewBooks = async ({values,token}) => {
+    console.log(token)
+    try {
+        const newBooksResponse = await axios.post(`${BOOKS_URL}/new-books`, {...values},{
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        console.log(newBooksResponse)
+        return newBooksResponse.data
+    } catch (error) {
+        console.log(error)
+    }
+}

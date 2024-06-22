@@ -39,6 +39,16 @@
   cursor: pointer;
 }
 
+/* Layout.css */
+.layout {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  margin-top: 56px; /* Adjust based on the height of your navbar */
+  padding: 20px; /* Optional: Add padding for content */
+}
 
 @keyframes App-logo-spin {
   from {

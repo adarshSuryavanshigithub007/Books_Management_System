@@ -3,7 +3,7 @@ import { Avatar, Card } from 'antd';
 import Meta from 'antd/es/card/Meta';
 import { faEye, faPencil, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { book } from '../components/images/image';
+import { book } from './images/image';
 export const CardComponent = ({ title, description, price, author, publishYear }) => {
     return (
         <div className='container'>
