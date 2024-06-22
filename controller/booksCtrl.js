@@ -51,7 +51,7 @@ const getAllBooksController = async (req, resp) => {
             })
         }
         return resp.status(200).send({
-            message: "Books fetched successfully",
+            message: "List Of Books",
             success: true,
             data: books
         })

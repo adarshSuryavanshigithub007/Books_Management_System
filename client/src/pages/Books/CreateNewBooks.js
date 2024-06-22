@@ -29,6 +29,7 @@ const CreateNewBooks = () => {
             <CommonForm
                 onFinish={handleSubmitForm}
                 minHeight='50%'
+                marginTop="30px"
                 SignUp='false'
                 SignIn='false'
                 heading='Add New Book'

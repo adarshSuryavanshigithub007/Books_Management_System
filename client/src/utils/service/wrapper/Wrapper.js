@@ -5,7 +5,7 @@ const Wrapper = ({ children }) => {
     console.log(children);  // Check if children are correctly passed
     return (
         <Layout>
-            <div style={{ marginTop: "20px" }}>
+            <div style={{ margin: "0px 40px" }}>
                 {children}  {/* Render `children` prop */}
             </div>
         </Layout>

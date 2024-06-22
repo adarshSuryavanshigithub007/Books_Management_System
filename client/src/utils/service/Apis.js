@@ -39,18 +39,31 @@ export const getUserinfo = async (token) => {
     }
 }
 
-
-
-export const AddNewBooks = async ({values,token}) => {
+export const AddNewBooks = async ({ values, token }) => {
     console.log(token)
     try {
-        const newBooksResponse = await axios.post(`${BOOKS_URL}/new-books`, {...values},{
+        const newBooksResponse = await axios.post(`${BOOKS_URL}/new-books`, { ...values }, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
         })
         console.log(newBooksResponse)
         return newBooksResponse.data
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const getAllBooks = async (token) => {
+    console.log(token)
+    try {
+        const AllBooksResponse = await axios.get(`${BOOKS_URL}/books`,{
+            headers: {
+                Authorization: `Bearer ${token}`
+            }   
+        })
+        console.log(AllBooksResponse)
+        return AllBooksResponse.data
     } catch (error) {
         console.log(error)
     }

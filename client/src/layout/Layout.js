@@ -37,7 +37,7 @@ const Layout = (  {children}) => {
                 <div className="collapse navbar-collapse" id="navbarText">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <Link className="nav-link active" aria-current="page" to="/">Books</Link>
+                            <Link className="nav-link active" aria-current="page" to="/">   </Link>
                         </li>
                     </ul>
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
