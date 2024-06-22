@@ -55,12 +55,11 @@ export const AddNewBooks = async ({ values, token }) => {
 }
 
 export const getAllBooks = async (token) => {
-    console.log(token)
     try {
-        const AllBooksResponse = await axios.get(`${BOOKS_URL}/books`,{
+        const AllBooksResponse = await axios.get(`${BOOKS_URL}/books`, {
             headers: {
                 Authorization: `Bearer ${token}`
-            }   
+            }
         })
         console.log(AllBooksResponse)
         return AllBooksResponse.data
@@ -68,3 +67,35 @@ export const getAllBooks = async (token) => {
         console.log(error)
     }
 }
+
+export const getDeleteBook = async (token, id) => {
+    console.log(id)
+    try {
+        const response = await axios.delete(`${BOOKS_URL}books/${id}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        console.log(response)
+        return response.data
+        // 
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const getEditBook = async (token, id, data) => {
+    console.log("edit book", token, id, data); // Check console log for correct values
+    try {
+        const response = await axios.put(`${BOOKS_URL}books/${id}`, data, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+        console.log(response.data); // Log response data for debugging
+        return response.data;
+    } catch (error) {
+        console.error(error); // Log error for debugging
+        throw error; // Throw error to handle it in calling function
+    }
+};

@@ -7,7 +7,7 @@ import { CommonButton } from './CommonButton'
 import { faBook } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-export const CommonForm = ({ onFinish, to, heading, SignUp, SignIn, Children, type, minHeight, marginTop }) => {
+export const CommonForm = ({ onFinish, to, heading, SignUp, SignIn, Children, type, minHeight, marginTop,form }) => {
     console.log(SignUp, SignIn)
     return (
         <>
@@ -34,8 +34,8 @@ export const CommonForm = ({ onFinish, to, heading, SignUp, SignIn, Children, ty
                                     }}
                                     icon={<UserOutlined />}
                                 />
-                            ):null}
-                            <Form name="basic" layout='vertical' onFinish={onFinish} style={{ width: '100%' }}>
+                            ) : null}
+                            <Form name="basic" layout='vertical' onFinish={onFinish} form={form} style={{ width: '100%' }}>
                                 <h1 style={{ textAlign: 'center' }}>{heading}</h1>
                                 {SignUp && (
                                     <Form.Item label="Username" name="username" rules={[{ required: true, message: 'Please input your username!' }]}>
@@ -85,7 +85,7 @@ export const CommonForm = ({ onFinish, to, heading, SignUp, SignIn, Children, ty
                                     marginBottom: '0px',
                                     marginTop: '-40px'
                                 }}
-                                icon={<FontAwesomeIcon icon={faBook} />}    
+                                icon={<FontAwesomeIcon icon={faBook} />}
                             />
                             <Form name="basic" layout='vertical' onFinish={onFinish} style={{ width: '100%' }}>
                                 <h3 style={{ textAlign: 'center' }}>{heading}</h3>
@@ -96,7 +96,7 @@ export const CommonForm = ({ onFinish, to, heading, SignUp, SignIn, Children, ty
                                     <Input type='text' required />
                                 </Form.Item>
                                 <Form.Item label="Description" name="description" rules={[{ required: true, message: 'Please input description!' }]}>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                 </Form.Item>
                                 <Form.Item label="Price" name="price" rules={[{ required: true, message: 'Please input price!' }]}>
                                     <Input type="number" required />

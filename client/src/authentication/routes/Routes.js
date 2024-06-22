@@ -6,6 +6,7 @@ import Register from '../Register';
 import PublicRoute from './PublicRoute';
 import CreateNewBooks from '../../pages/Books/CreateNewBooks';
 import ProtectedRoute from './ProtectedRoute';
+import EditBook from '../../pages/Books/EditBook';
 
 const RoutesComponents = () => {
     return (
@@ -13,6 +14,7 @@ const RoutesComponents = () => {
             <Routes>
                 <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
                 <Route path="/addnewbooks" element={<ProtectedRoute><CreateNewBooks /></ProtectedRoute>} />
+                <Route path="/edituser/:id" element={<ProtectedRoute><EditBook /></ProtectedRoute>} />
                 <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
                 <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
             </Routes>
