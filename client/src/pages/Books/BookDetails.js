@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import Wrapper from '../../utils/service/wrapper/Wrapper'
 import { useParams } from 'react-router-dom';
 import { getBookDetails } from '../../utils/service/Apis';
-import { CardComponent } from '../../components/CommonCardComponent';
-import { message, Row } from 'antd';
+import { message } from 'antd';
+import CardComponent from '../../components/CommonCardComponent';
 
 const BookDetails = () => {
     const [allBooks, setAllBooks] = useState({})
@@ -31,7 +31,6 @@ const BookDetails = () => {
     return (
         <Wrapper>
             <CardComponent eachBooks={allBooks} details={true}/>
-
         </Wrapper>
     )
 }

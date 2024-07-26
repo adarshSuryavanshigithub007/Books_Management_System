@@ -5,7 +5,7 @@ import { faEye, faPencil, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { book } from './images/image';
 import { Link } from 'react-router-dom';
-export const CardComponent = ({ eachBooks, deleteBook, to, toBookDetails, details }) => {
+ const CardComponent = ({ eachBooks, deleteBook, to, toBookDetails, details }) => {
     return (
         <div className='col-4 col-lg-4 col-md-4'>
             <Card
@@ -48,3 +48,4 @@ export const CardComponent = ({ eachBooks, deleteBook, to, toBookDetails, detail
     )
 }
 
+export default CardComponent

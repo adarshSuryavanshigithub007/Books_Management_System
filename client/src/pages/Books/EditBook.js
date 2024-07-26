@@ -3,27 +3,35 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import Wrapper from '../../utils/service/wrapper/Wrapper';
 import { CommonForm } from '../../components/CommonForm';
 import { getAllBooks, getEditBook } from '../../utils/service/Apis';
-import { Avatar, Button, Col, Form, Input, message, Row } from 'antd';
+import { Avatar, Button, Col, Form, Input, message, Progress, Row } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBook } from '@fortawesome/free-solid-svg-icons';
+import { faBook, faL } from '@fortawesome/free-solid-svg-icons';
 import { SendOutlined } from '@ant-design/icons';
 import { CommonButton } from '../../components/CommonButton';
+import ProgressComponent from '../../utils/Progress';
 
 const EditBook = () => {
     const [allBooks, setAllBooks] = useState([]);
     const [book, setBook] = useState(null);
     const token = localStorage.getItem('token');
+    const [loading, setLoading] = useState(true);
+    const [progress, setProgress] = useState(0);
     const { id } = useParams(); // Extract id from useParams
     const [form] = Form.useForm(); // Create a form instance
     const navigate = useNavigate()
     const handleChangeAllBooks = async () => {
+        setLoading(true)
+        setProgress(0)
         try {
+            await getAllBooks(token,(parcent)=>setProgress(parcent)) 
             const allBooks = await getAllBooks(token);
             if (allBooks.success) {
                 setAllBooks(allBooks.data);
             }
         } catch (error) {
             console.error(error);
+        }finally{
+            setLoading(false)
         }
     };
 
@@ -57,7 +65,7 @@ const EditBook = () => {
 
     return (
         <Wrapper>
-            {book && (
+            {loading ? (<><ProgressComponent progress={progress}/> </>):(<>   {book && (
                 <Row justify="center" align="middle" style={{ minHeight: '50%', marginTop: '30px' }}>
                     <Col xs={22} sm={20} md={16} lg={12} xl={8}>
                         <div style={{
@@ -131,7 +139,8 @@ const EditBook = () => {
                         </div>
                     </Col>
                 </Row>
-            )}
+            )}</>)}
+         
         </Wrapper>
     );
 };
